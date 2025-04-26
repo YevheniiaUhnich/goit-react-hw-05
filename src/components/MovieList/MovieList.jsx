@@ -5,9 +5,9 @@ const MovieList = ({ data }) => {
     <div>
       <ul>
         {data.map((item) => (
-          <Link to={item.id.toString()}>
-            <li key={item.id}>{item.title}</li>
-          </Link>
+          <li key={item.id}>
+            <Link to={`/movies/${item.id}`}>{item.title}</Link>
+          </li>
         ))}
       </ul>
     </div>
