@@ -20,11 +20,10 @@ const MovieCast = () => {
   }, [movieId]);
   return (
     <div>
-      <h3>Additional information</h3>
       <ul>
         {cast.map((actor) => (
           <li key={actor.cast_id}>
-            <Link to={`/movies/${movieId}/cast`}></Link>
+            {/* <Link to={`/movies/${movieId}/cast`}></Link> */}
             <p>
               <strong>{actor.name}</strong> as {actor.character}
             </p>

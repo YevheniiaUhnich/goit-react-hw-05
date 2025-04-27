@@ -87,7 +87,7 @@ export const fetchMovieSearch = async (query) => {
     );
     return response.data.results;
   } catch (error) {
-    toast.error("Failed to fetch movie details...");
+    toast.error("Failed to fetch movies search results...");
     console.log("Error fetching movie details...", error);
   }
 };

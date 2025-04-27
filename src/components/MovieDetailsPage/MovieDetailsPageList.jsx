@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { fetchMovieDetails } from "../../api-movie";
 import { NavLink } from "react-router-dom";
 import { Outlet } from "react-router-dom";
+import s from "./MovieDetailsPageList.module.css";
 
 const MovieDetailsPageList = () => {
   const { movieId } = useParams();
@@ -34,9 +35,14 @@ const MovieDetailsPageList = () => {
       ) : (
         <p>Loading...</p>
       )}
-      <nav>
-        <NavLink to="cast">Cast</NavLink>
-        <NavLink to="reviews">Review</NavLink>
+      <h3 className={s.title}>Additional information</h3>
+      <nav className={s.navLinkList}>
+        <NavLink to="cast" className={s.navLinkOne}>
+          Cast
+        </NavLink>
+        <NavLink to="reviews" className={s.navLinkTwo}>
+          Review
+        </NavLink>
       </nav>
 
       <Outlet />

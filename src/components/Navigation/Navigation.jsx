@@ -7,7 +7,7 @@ const Navigation = () => {
     return clsx(s.link, isActive && s.active);
   };
   return (
-    <header>
+    <header className={s.header}>
       <nav className={s.navLink}>
         <NavLink className={setActiveClassLink} to="/">
           Home

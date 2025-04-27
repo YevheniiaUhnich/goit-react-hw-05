@@ -1,9 +1,9 @@
-import s from "./MoviesPage.module.css";
-import { LiaSearchSolid } from "react-icons/lia";
 import toast from "react-hot-toast";
 import { fetchMovieSearch } from "../../api-movie";
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
+import s from "./MoviesPage.module.css";
+import { LiaSearchSolid } from "react-icons/lia";
 
 // const initialValues = {
 //   query: "",
@@ -35,23 +35,23 @@ const MoviesPage = () => {
   };
 
   return (
-    <div>
+    <div className={s.inputSearch}>
       <form
         onSubmit={handleSubmit}
         // initialValues={initialValues}
-        className={s.formSearch}>
-        <div>
-          <LiaSearchSolid />
-          <input
-            type="text"
-            name="query"
-            autoComplete="off"
-            autoFocus
-            placeholder="Search movie"
-            value={query}
-            onChange={(e) => setQuery(e.target.value)}
-          />
-        </div>
+      >
+        <LiaSearchSolid className={s.icon} />
+        <input
+          className={s.input}
+          type="text"
+          name="query"
+          autoComplete="off"
+          autoFocus
+          placeholder="Search movie"
+          value={query}
+          onChange={(e) => setQuery(e.target.value)}
+        />
+
         <button className={s.btnSearchMovie}>Search</button>
       </form>
       <ul>
