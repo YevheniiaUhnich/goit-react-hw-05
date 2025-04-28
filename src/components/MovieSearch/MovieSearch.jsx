@@ -5,7 +5,7 @@ import { LiaSearchSolid } from "react-icons/lia";
 const MovieSearch = ({ handleSubmitMovies }) => {
   const handleSubmit = (evt) => {
     evt.preventDefault();
-    const form = event.target;
+    const form = evt.target;
     const query = form.elements.query.value.trim();
     handleSubmitMovies(query);
     form.reset();
