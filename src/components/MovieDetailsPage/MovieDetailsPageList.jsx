@@ -4,6 +4,7 @@ import { fetchMovieDetails } from "../../api-movie";
 import { NavLink, useLocation, Link } from "react-router-dom";
 import { Outlet } from "react-router-dom";
 import s from "./MovieDetailsPageList.module.css";
+import { defaultPoster } from "../../api-movie";
 
 const MovieDetailsPageList = () => {
   const { movieId } = useParams();
@@ -34,7 +35,12 @@ const MovieDetailsPageList = () => {
           <h2>{movieDetails.title}</h2>
           <p>{movieDetails.overview}</p>
           <img
-            src={`https://image.tmdb.org/t/p/w500${movieDetails.poster_path}`}
+            src={
+              movieDetails.poster_path
+                ? `https://image.tmdb.org/t/p/w500${movieDetails.poster_path}`
+                : defaultPoster
+            }
+            width={250}
             alt={movieDetails.title}
           />
         </div>
