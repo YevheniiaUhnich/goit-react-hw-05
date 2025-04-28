@@ -1,7 +1,7 @@
 import toast from "react-hot-toast";
 import { fetchMovieSearch } from "../../api-movie";
-import { useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { Link, useLocation, useSearchParams } from "react-router-dom";
 import s from "./MoviesPage.module.css";
 import { LiaSearchSolid } from "react-icons/lia";
 
@@ -9,9 +9,34 @@ import { LiaSearchSolid } from "react-icons/lia";
 //   query: "",
 // };
 const MoviesPage = () => {
-  const [query, setQuery] = useState("");
   const [movies, setMovies] = useState([]);
+  const [searchParams, setSearchParams] = useSearchParams();
   const location = useLocation();
+  const query = searchParams.get("query") || "";
+
+  useEffect(() => {
+    const fetchMovies = async () => {
+      if (!query.trim()) return;
+      try {
+        const results = await fetchMovieSearch(query);
+
+        if (results.length === 0) {
+          toast.error("No movies found for your search.");
+        }
+
+        const filteredData = results.filter((movie) =>
+          movie.title.toLowerCase().includes(query.toLowerCase())
+        );
+
+        setMovies(filteredData);
+      } catch (error) {
+        console.error("Error searching movies:", error);
+        toast.error("Failed to search movies");
+      }
+    };
+
+    fetchMovies();
+  }, [query]);
 
   const handleSubmit = async (evt) => {
     evt.preventDefault();
@@ -20,18 +45,16 @@ const MoviesPage = () => {
       toast.error("Please enter a search query");
       return;
     }
-    try {
-      const results = await fetchMovieSearch(query);
-      if (results.length === 0) {
-        toast.error("No movies found for your search.");
-      }
-      setMovies(results);
-    } catch (error) {
-      console.error("Error searching movies:", error);
-      toast.error("Failed to search movies");
-    }
+  };
 
-    setQuery("");
+  const handleChange = (e) => {
+    const newSearchValue = e.target.value;
+
+    const newSearchParams = new URLSearchParams();
+    if (newSearchValue.trim() !== "") {
+      newSearchParams.set("query", newSearchValue);
+    }
+    setSearchParams(newSearchParams);
   };
 
   return (
@@ -49,7 +72,7 @@ const MoviesPage = () => {
           autoFocus
           placeholder="Search movie"
           value={query}
-          onChange={(e) => setQuery(e.target.value)}
+          onChange={handleChange}
         />
 
         <button className={s.btnSearchMovie}>Search</button>
@@ -57,7 +80,7 @@ const MoviesPage = () => {
       <ul>
         {movies.map((movie) => (
           <li key={movie.id}>
-            <Link to={`/movies/${movie.id}`} state={{ from: location }}>
+            <Link state={location} to={`/movies/${movie.id}`}>
               {movie.title}
             </Link>
           </li>

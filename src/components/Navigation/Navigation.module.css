@@ -6,6 +6,7 @@
   flex-direction: row;
   gap: 20px;
   font-size: 18px;
+  margin-bottom: 20px;
 }
 
 .navLink {

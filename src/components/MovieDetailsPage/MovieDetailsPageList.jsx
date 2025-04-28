@@ -1,13 +1,16 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useParams } from "react-router-dom";
 import { fetchMovieDetails } from "../../api-movie";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation, Link } from "react-router-dom";
 import { Outlet } from "react-router-dom";
 import s from "./MovieDetailsPageList.module.css";
 
 const MovieDetailsPageList = () => {
   const { movieId } = useParams();
-  const [movieDetails, setMovieDetails] = useState(null);
+  const [movieDetails, setMovieDetails] = useState("");
+  const location = useLocation();
+  const goBackRef = useRef(location.state ?? "/movies");
+  console.log(location);
 
   useEffect(() => {
     const getMovie = async () => {
@@ -23,6 +26,9 @@ const MovieDetailsPageList = () => {
 
   return (
     <div>
+      <Link className={s.linkGoBack} to={goBackRef.current}>
+        Go back
+      </Link>
       {movieDetails ? (
         <div>
           <h2>{movieDetails.title}</h2>
@@ -37,7 +43,7 @@ const MovieDetailsPageList = () => {
       )}
       <h3 className={s.title}>Additional information</h3>
       <nav className={s.navLinkList}>
-        <NavLink to="cast" className={s.navLinkOne}>
+        <NavLink state={location} to="cast" className={s.navLinkOne}>
           Cast
         </NavLink>
         <NavLink to="reviews" className={s.navLinkTwo}>

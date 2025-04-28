@@ -18,3 +18,34 @@
 .title {
   font-size: 22px;
 }
+
+.linkGoBack {
+  font-size: 20px;
+  text-decoration: none;
+  position: relative;
+  padding: 6px;
+  background-color: rgb(188, 192, 192);
+  border: 1px solid rgb(218, 212, 212);
+}
+
+.linkGoBack::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: -36%;
+  transform: translateY(-50%);
+  border-width: 15px;
+  border-style: solid;
+  border-color: transparent rgb(188, 192, 192) transparent transparent;
+}
+/* 
+.linkGoBack::after {
+  content: "";
+  position: absolute;
+  top: -2px;
+  left: 100%;
+  transform: translateY(-50%);
+  border-width: 10px;
+  border-style: solid;
+  border-color: transparent transparent transparent #333;
+} */
