@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { fetchMovieCast } from "../../api-movie";
 import { useParams } from "react-router-dom";
+import { defaultPoster } from "../../api-movie";
 // import { Link } from "react-router-dom";
 
 const MovieCast = () => {
@@ -29,9 +30,12 @@ const MovieCast = () => {
             </p>
             {actor.profile_path && (
               <img
-                src={`https://image.tmdb.org/t/p/w200${actor.profile_path}`}
+                src={
+                  actor.profile_path
+                    ? `https://image.tmdb.org/t/p/w500/${actor.profile_path}`
+                    : defaultPoster
+                }
                 alt={actor.name}
-                width="100"
               />
             )}
           </li>
