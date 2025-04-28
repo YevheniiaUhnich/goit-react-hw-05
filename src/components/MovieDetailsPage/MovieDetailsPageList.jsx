@@ -46,7 +46,7 @@ const MovieDetailsPageList = () => {
           />
         </div>
       ) : (
-        <div style={{ textAlign: "center", paddingTop: "100px" }}>
+        <div style={{ textAlign: "start", paddingTop: "100px" }}>
           <ClipLoader
             color="#36d7b7"
             size={50}
