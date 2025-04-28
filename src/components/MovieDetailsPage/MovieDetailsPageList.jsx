@@ -5,6 +5,7 @@ import { NavLink, useLocation, Link } from "react-router-dom";
 import { Outlet } from "react-router-dom";
 import s from "./MovieDetailsPageList.module.css";
 import { defaultPoster } from "../../api-movie";
+import { ClipLoader } from "react-spinners";
 
 const MovieDetailsPageList = () => {
   const { movieId } = useParams();
@@ -45,7 +46,14 @@ const MovieDetailsPageList = () => {
           />
         </div>
       ) : (
-        <p>Loading...</p>
+        <div style={{ textAlign: "center", paddingTop: "100px" }}>
+          <ClipLoader
+            color="#36d7b7"
+            size={50}
+            aria-label="Loading Spinner"
+            data-testid="loader"
+          />
+        </div>
       )}
       <h3 className={s.title}>Additional information</h3>
       <nav className={s.navLinkList}>
