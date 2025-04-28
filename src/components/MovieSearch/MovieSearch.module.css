@@ -1,0 +1,29 @@
+.inputSearch {
+  margin-top: 40px;
+}
+
+.input {
+  width: 240px;
+  height: 30px;
+  border-radius: 3px;
+  padding-left: 30px;
+}
+
+.inputSearch {
+  margin-top: 40px;
+}
+
+.btnSearchMovie {
+  margin-left: 20px;
+  height: 34px;
+  width: 80px;
+  border: 2px solid black;
+  border-radius: 3px;
+}
+
+.icon {
+  position: absolute;
+  z-index: 1;
+  margin-top: 10px;
+  margin-left: 10px;
+}
