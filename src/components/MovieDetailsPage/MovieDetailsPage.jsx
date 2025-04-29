@@ -3,11 +3,11 @@ import { useParams } from "react-router-dom";
 import { fetchMovieDetails } from "../../api-movie";
 import { NavLink, useLocation, Link } from "react-router-dom";
 import { Outlet } from "react-router-dom";
-import s from "./MovieDetailsPageList.module.css";
+import s from "./MovieDetailsPage.module.css";
 import { defaultPoster } from "../../api-movie";
 import { ClipLoader } from "react-spinners";
 
-const MovieDetailsPageList = () => {
+const MovieDetailsPage = () => {
   const { movieId } = useParams();
   const [movieDetails, setMovieDetails] = useState("");
   const location = useLocation();
@@ -70,4 +70,4 @@ const MovieDetailsPageList = () => {
   );
 };
 
-export default MovieDetailsPageList;
+export default MovieDetailsPage;

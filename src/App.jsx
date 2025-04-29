@@ -5,7 +5,7 @@ import { Route, Routes } from "react-router-dom";
 // import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
 // import HomePage from "./pages/HomePage/HomePage";
 // import MoviesPage from "./pages/MoviesPage/MoviesPage";
-// import MovieDetailsPageList from "./components/MovieDetailsPage/MovieDetailsPageList";
+// import MovieDetailsPage from "./components/MovieDetailsPage/MovieDetailsPage";
 // import MovieCast from "./components/MovieCast/MovieCast";
 // import MovieReviews from "./components/MovieReviews/MovieReviews";
 
@@ -17,8 +17,8 @@ const HomePage = lazy(() => import("./pages/HomePage/HomePage"));
 const NotFoundPage = lazy(() => import("./pages/NotFoundPage/NotFoundPage"));
 const Navigation = lazy(() => import("./components/Navigation/Navigation"));
 const MoviesPage = lazy(() => import("./pages/MoviesPage/MoviesPage"));
-const MovieDetailsPageList = lazy(() =>
-  import("./components/MovieDetailsPage/MovieDetailsPageList")
+const MovieDetailsPage = lazy(() =>
+  import("./components/MovieDetailsPage/MovieDetailsPage")
 );
 function App() {
   return (
@@ -29,7 +29,7 @@ function App() {
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/movies" element={<MoviesPage />} />
-            <Route path="/movies/:movieId" element={<MovieDetailsPageList />}>
+            <Route path="/movies/:movieId" element={<MovieDetailsPage />}>
               <Route path="cast" element={<MovieCast />} />
               <Route path="reviews" element={<MovieReviews />} />
             </Route>
